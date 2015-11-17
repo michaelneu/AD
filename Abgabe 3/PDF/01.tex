@@ -1,0 +1,30 @@
+\section*{Aufgabe 1}
+a) 
+\begin{align*}
+	f(n) &= \frac{\varphi^n - \hat{\varphi}^n}{\sqrt{5}} & \varphi &= \frac{1 + \sqrt{5}}{2} & \hat{\varphi} &= \frac{1 - \sqrt{5}}{2}
+\end{align*}
+
+\textbf{I.A.:} Für $f(n)$ gilt $f(1) = 1$ und $f(2) = 1$
+\begin{align*}
+    f(1) &= \frac{\frac{1 + \sqrt{5}}{2} - \frac{1 - \sqrt{5}}{2}}{\sqrt{5}} = \frac{1 + \sqrt{5} - 1 + \sqrt{5}}{2 \cdot \sqrt{5}} = \frac{2 \cdot \sqrt{5}}{2 \cdot \sqrt{5}} = 1 \\[0.5cm]
+%
+    f(2) &= \frac{\left( \frac{1 + \sqrt{5}}{2} \right)^2 - \left( \frac{1 - \sqrt{5}}{2} \right)^2}{\sqrt{5}} = \frac{\left( 1 + \sqrt{5} \right)^2 - \left( 1 - \sqrt{5} \right)^2}{2^2 \cdot \sqrt{5}} = \frac{1 + 2 \cdot \sqrt{5} + 5 - (1 - 2 \cdot \sqrt{5} + 5)}{4 \cdot \sqrt{5}} = 1
+\end{align*}
+    
+\textbf{I.V.:} Wenn $f(n)$ gilt, dann gilt $f(n) = f(n - 1) + f(n - 2)$ \\
+\textbf{I.S.:}
+\begin{align*}
+	f(n) &= f(n - 1) + f(n - 2) = \\
+    &= \frac{\varphi^{n - 1} - \hat{\varphi}^{n - 1}}{\sqrt{5}} + \frac{\varphi^{n - 2} - \hat{\varphi}^{n - 2}}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\varphi + 1) + \hat{\varphi}^{n - 2} \cdot (\hat{\varphi} + 1)}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\frac{1 + \sqrt{5}}{2} + 1) + \hat{\varphi}^{n - 2} \cdot (\frac{1 - \sqrt{5}}{2} + 1)}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\frac{2 + 1 + \sqrt{5}}{2}) + \hat{\varphi}^{n - 2} \cdot (\frac{2 + 1 - \sqrt{5}}{2})}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\frac{4 + 2 + 2\sqrt{5}}{4}) + \hat{\varphi}^{n - 2} \cdot (\frac{4 + 2 - 2\sqrt{5}}{4})}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\frac{1 + 2\sqrt{5} + 5}{4}) + \hat{\varphi}^{n - 2} \cdot (\frac{1 - 2\sqrt{5} + 5}{4})}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\frac{(1 + \sqrt{5})^2}{2^2}) + \hat{\varphi}^{n - 2} \cdot (\frac{(1 - \sqrt{5})^2}{2^2})}{\sqrt{5}} = \\
+    &= \frac{\varphi^{n - 2} \cdot (\varphi^2) + \hat{\varphi}^{n - 2} \cdot (\hat{\varphi}^2)}{\sqrt{5}} = \\
+    &= \frac{\varphi^n + \hat{\varphi}^n}{\sqrt{5}}
+\end{align*}
+\nuffsaid \\[0.5cm]
+
+b) Aus a) ist bekannt, dass $f(n) = \frac{\varphi^n + \hat{\varphi}^n}{\sqrt{5}}$ gilt. Nachdem $0 < |\frac{1 - \sqrt{5}}{2}| < 1$ ist $\hat{\varphi}$ für große $n$ vernachlässigbar. Deshalb wirkt sich $\hat{\varphi}$ nicht auf die Laufzeit von $f(n)$ aus, weshalb die Laufzeit mit $\Theta(\varphi^n)$ angegeben werden kann.  

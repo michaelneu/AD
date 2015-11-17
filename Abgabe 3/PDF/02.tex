@@ -1,0 +1,97 @@
+\section*{Aufgabe 2}
+a) \begin{align*}
+	T(1) &= 1 \\
+    T(n) &= 4 \cdot T\left( \frac{n}{2} \right) + n \\
+    &= 4\left( 4\left( 4T\left( \frac{n}{2^3} \right) + \frac{n}{4} \right) + \frac{n}{2} \right) + n \\
+    &= 4^3T\left( \frac{n}{2^3} \right) + 7n \\
+    &= 4^4T\left( \frac{n}{2^4} \right) + 15n \\
+    &\hphantom{..} \vdots \\
+    &= (2^i)^2T\left( \frac{n}{2^i} \right) + (2^i - 1) \cdot n \\[0.5cm]
+    \frac{n}{2^i} &= 1 \Rightarrow n = 2^i \Rightarrow i = log(n) \\
+    &\Downarrow \\
+    T(n) &= n^2 T(1) + (n - 1) \cdot n = \\
+    &= 2 \cdot n^2 - n \in \Theta(n^2)
+\end{align*}
+
+\begin{itemize}[nolistsep, noitemsep]
+	\item[\textbf{I.A.:}] \begin{align*}
+    		T(1) &= 1 \\
+            T(1) &= 2 \cdot 1^2 - 1 = 1
+    	\end{align*}
+	\item[\textbf{I.V.:}] Für $\frac{n}{2} \in \mathbb{N} \geq 1$ gelte: \begin{align*}
+    		T(n) &= 2 \cdot n^2 - n
+    	\end{align*}
+	\item[\textbf{I.S.:}] \begin{align*}
+    		T(n) &= 4 \cdot T \left( \frac{n}{2} \right) + n = \\
+            &= 4 \cdot \left( 2 \cdot \left( \frac{n}{2} \right)^2 - \frac{n}{2} \right) + n = \\
+            &= 2n^2 - 2n + n = \\
+            &= 2n^2 - n
+    	\end{align*}
+\end{itemize}
+\nuffsaid
+
+\newpage
+
+b) \begin{align*}
+	T(1) &= 1 \\
+    T(n) &= 2 \cdot T\left( \frac{n}{4} \right) + \sqrt{n} \\
+    &= 2\left( 2\left( 2\left( 2 \cdot T\left( \frac{n}{4^4} \right) + \sqrt{\frac{n}{4^3}} \right) + \sqrt{\frac{n}{4^2}} \right) + \sqrt{\frac{n}{4}} \right) + \sqrt{n} = \\
+    &\hphantom{..} \vdots \\
+    &= 2^i \cdot T\left( \frac{n}{4^i} \right) + i \cdot \sqrt{n} \\[0.5cm]
+    \frac{n}{4^i} &= 1 \Rightarrow n = 4^i \Rightarrow i = \log_4(n) \\
+    &\Downarrow \\
+    T(n) &= \sqrt{n} + \log_4(n) \cdot \sqrt{n} \in \Theta \left( \log_4(n) \cdot \sqrt{n} \right)
+\end{align*}
+
+\begin{itemize}[nolistsep, noitemsep]
+	\item[\textbf{I.A.:}] \begin{align*}
+    		T(1) &= 1 \\
+            T(1) &= \sqrt{1} + \log_4(1) \cdot \sqrt{1} = \\
+            &= 1
+    	\end{align*}
+	\item[\textbf{I.V.:}] Für $\frac{n}{4} \in \mathbb{N}$ gelte: \begin{align*}
+    		T(n) &= \sqrt{n} + \log_4(n) \cdot \sqrt{n}
+    	\end{align*}
+	\item[\textbf{I.S.:}] \begin{align*}
+    		T(n) &= 2 \cdot T\left( \frac{n}{4} \right) + \sqrt{n} = \\
+            &= 2 \cdot \left( \sqrt{\frac{n}{4}} + \log_4\left( \frac{n}{4} \right) \cdot \sqrt{\frac{n}{4}} \right) + \sqrt{n} = \\
+            &= 2 \cdot \left( \frac{1}{2} \cdot \sqrt{n} \cdot \left( 1 + \log_4(n) - \log_4(4) \right) \right) + \sqrt{n} = \\
+            &= \sqrt{n} \cdot \left( 1 + \log_4(n) - 1 \right) + \sqrt{n} = \\
+            &= \sqrt{n} \cdot \log_4(n) + \sqrt{n}
+    	\end{align*}
+\end{itemize}
+\nuffsaid
+
+\newpage
+
+c) \begin{align*}
+	T(n) &= 2 \cdot T(n - 1) + n^2 = \\
+    &= 2(2(2T(n - 3) + (n - 2)^2) + (n - 1)^2) + n^2 = \\
+    &= 2^3T(n - 3) + 7n^2 + 20n + 18 = \\
+    &= 2^4T(n - 4) + 15n^2 - 68n + 90 = \\
+    &\hphantom{..} \vdots \\
+    &= 2^iT(n - i) + \sum_{k = 0}^{i - 1} 2^k(n - k)^2 \\
+    &\Downarrow \\
+    \text{Rekursionsbasis $= 3$ } &\Rightarrow n - i = 3 \Rightarrow i = n - 3 \\
+    T(n) &= 2^{n - 3} + \sum_{k = 0}^{n - 4} 2^k(n - k)^2 \text{  für $n \geq 3$ }
+\end{align*}
+
+\begin{itemize}[nolistsep, noitemsep]
+	\item[\textbf{I.A.:}] \begin{align*}
+    		T(3) &= 1 \\
+            T(3) &= 2^0 + 0 = 1
+    	\end{align*}
+	\item[\textbf{I.V.:}] Für $n - 1 \in \mathbb{N} \geq 3$ gelte: \begin{align*}
+    		T(n) &= 2^{n - 3} + \sum_{k = 0}^{n - 4} 2^k(n - k)^2
+    	\end{align*}
+	\item[\textbf{I.S.:}] \begin{align*}
+    		T(n) &= 2T(n - 1) + n^2 = \\
+            &= 2 \cdot \left( 2^{n - 4} + \sum_{k = 0}^{n - 5} 2^k(n - 1 - k)^2 \right) + n^2 \\
+            &= 2^{n - 3} + 2\sum_{k = 0}^{n - 5} 2^k(n - 1 - k)^2 + n^2 \\
+            &= 2^{n - 3} + 2\sum_{k = 1}^{n - 4} 2^{k - 1}(n - 1 - (k - 1))^2 + n^2 \\
+            &= 2^{n - 3} + \sum_{k = 1}^{n - 4} 2^k(n - k)^2 + n^2 \\
+            &= 2^{n - 3} + \sum_{k = 0}^{n - 4} 2^k(n - k)^2
+    	\end{align*}
+\end{itemize}
+
+\nuffsaid

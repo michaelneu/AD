@@ -1,0 +1,27 @@
+\section*{Aufgabe 3}
+a) \begin{align*}
+	T(n) &= T\left( \frac{n}{2} \right) + 1 \\
+    a &= 1, b = 2, f(n) = 1, \log_b(a) = 0 \\[0.5cm]
+    &\Rightarrow \text{Fall 2} \Rightarrow T(n) \in \Theta(\log(n))
+\end{align*}
+
+
+b) \begin{align*}
+	T(n) &= 3 \cdot T\left( \frac{n}{4} \right) + n\log(n) \\
+    a &= 3, b = 4, f(n) = n\log(n) \\
+    \log_b(a) &= 0.79 \\[0.5cm]
+    &\Rightarrow \text{3. Fall?} \\
+    a \cdot f\left( \frac{n}{b} \right) &\leq c \cdot f(n) \\
+    3 \cdot \frac{n}{4} \cdot \log\left( \frac{n}{4} \right) &\leq c \cdot n \cdot \log(n) \\
+    \frac{3}{4} (\log(n) - 2) &\leq c \cdot \log(n) \\
+    \frac{3}{4} \cdot \log(n) - \frac{3}{2} &\leq c \cdot \log(n) &/ :\log(n) \text{ mit } n > 1 \\
+    \frac{3}{4} - \frac{3}{2 \cdot \log(n)} &\leq c \\
+    &\Rightarrow \text{ Fall 3 } \Rightarrow T(n) \in \Theta(\log(n)\cdot n^{\log_4(3)} \text{ für $n \geq n_0$ mit $n_0 = 2$}
+\end{align*}
+
+
+c) \begin{align*}
+	T(n) &= 7 \cdot T\left( \frac{n}{2} \right) + n^2 \\
+    a &= 7, b = 2, f(n) = n^2, \log_b(a) = 2.807 \\[0.5cm]
+    &\Rightarrow \text{Fall 1} \Rightarrow T(n) \in \Theta(n^{\log_2(7)})
+\end{align*}

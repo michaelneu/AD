@@ -1,0 +1,62 @@
+\section*{Aufgabe 4}
+Der Algorithmus für \textit{MaxTeilsumme4-2d} wurde im Folgenden in C++ umgesetzt, der mitunter verwendete Algorithmus für \textit{MaxTeilsumme3} entspricht dem der Vorlesung und besitzt die Laufzeit $O(n)$. Die Programmiersprache der Implementierung im Anhang kann sich unterscheiden. 
+
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{cpp}
+#include <algorithm>
+#include <iostream>
+#include <limits>
+
+int maxPartialSum(int a[], size_t size) {
+	int i, s, curSum = 0,
+		maxSum = std::numeric_limits<int>::min();
+
+	for (int i = 0; i < size; ++i) {
+		s = curSum + a[i];
+
+		if (s > a[i])
+			curSum = s;
+		else
+			curSum = a[i];
+
+		maxSum = std::max(curSum, maxSum);
+	}
+
+	return maxSum;
+}
+
+template <size_t elements>
+int maxPartialSum2D(int (&a)[elements][elements], size_t size) {
+	int *temp = new int[size];
+	int maxSum = std::numeric_limits<int>::min();
+
+	for (int left = 0; left < size; ++left) {
+		std::memset(temp, 0, size * sizeof(int));
+
+		for (int right = left; right < size; ++right) {
+			for (int i = 0; i < size; ++i)
+				temp[i] += a[i][right];
+
+			maxSum = std::max(maxPartialSum(temp, size), maxSum);
+		}
+	}
+	
+    delete[] temp;
+	return maxSum;
+}
+
+int main(int argc, const char **argv) {
+	const size_t n = 5;
+
+	int matrix[n][n] = {
+		{1, 2, 3, 4, 5}, 
+        {-1, -2, -3, -5, -8}, 
+        {-3, 1, 4, -1, 6}, 
+        {2, 4, -9, 16, 25},
+		{-100, 81, 64, -49, 36}
+	};
+
+	std::cout << "Maximum partial sum is " << maxPartialSum2D(matrix, n) << std::endl;
+	return 0;
+}
+
+\end{minted}
