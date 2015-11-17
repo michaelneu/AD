@@ -1,0 +1,42 @@
+\section*{Aufgabe 4}
+\paragraph{Notation} 
+\begin{itemize}[noitemsep]
+	\item $A(i, j)$ = Element $(i, j)$ der Matrix $A$
+    \item $A_{s, t}(i, j)$ = Element $(i, j)$ der Matrix $A_{s, t}$
+\end{itemize}
+
+a) Korrektheit der beiden Varianten
+\paragraph{Variante 1}
+\begin{align*}
+	O(i, j) &= (M \cdot N)(i, j) \\
+    &= \sum_{k = 1}^n \left( M(i, k) \cdot N(k, j) \right) & \forall i,j \in \{1, \dots, n\} \\[0.5cm]
+    \text{Sei } i, j \in \left\{ 1, \dots, \frac{n}{2} \right\}& \\
+    O_{11}(i, j) &= \sum_{k = 1}^n M(i, k) \cdot N(k, j) = \\
+    &= \sum_{k = 1}^{\frac{n}{2}} M(i, k) \cdot N(k, j) + \sum_{k = \frac{n}{2} + 1}^n M(i, k) \cdot N(k, j) = \\
+    &= \sum_{k = 1}^{\frac{n}{2}} M_{11}(i, k) \cdot N_{11}(k, j) + \sum_{k = 1}^{\frac{n}{2}} M_{12}(i, k) \cdot N_{21}(k, j) = \\
+    &= (M_{11}N_{11})(i, j) + (M_{12}N_{21})(i, j) & \forall i, j \in \left\{ 1, \dots, \frac{n}{2} \right\}
+\end{align*}
+
+\paragraph*{Variante 2}
+	\begin{align*}
+    	O_{11} &= (M_{11} + M_{22}) \cdot (N_{11} + N_{22}) + M_{22} \cdot (N_{21} - N_{11}) - (M_{11} + M_{12}) \cdot N_{22} + \\ 
+        &\hphantom{=~~} (M_{12} - M_{22}) \cdot (N_{21} + N_{22}) = \\
+        &= (M_{11}N_{11} + M_{11}N_{22} + M_{22}N_{11} + M_{22}N_{22}) + (M_{22}N_{21} - M_{22}N_{11}) + \\
+        &\hphantom{=~~} (-M_{11}N_{22} - M_{22}N_{11}) + (M_{12}N_{21} + M_{12}N_{22} - M_{22}N_{21} - M_{22}N_{22}) = \\
+        &= M_{11}N_{11} + M_{12}N_{21} = O_{11}\\[0.5cm]
+        O_{12} &= M_{12} \cdot (N_{12} - N_{22}) + (M_{11} + M_{12}) \cdot N_{22} = \\
+        &= M_{11}N_{12} - M_{11}N_{22} + M_{11}N_{22} + M_{12}N_{22} = \\
+        &= M_{11}N_{12} + M_{12}N_{22} = O_{12} \\[0.5cm]
+        O_{21} &= (M_{21} + M_{22}) \cdot N_{11} + M_{22} \cdot (N_{21} - N_{11}) = \\
+        &= M_{21}N_{11} + M_{22}N_{11} + M_{22}N_{21} - M_{22}N_{11} = \\
+        &= M_{21}N_{11} + M_{22}N_{21} = O_{21} \\[0.5cm]
+        O_{22} &= (M_{11} + M_{22}) \cdot (N_{11} + N_{22}) - (M_{21} + M_{22}) \cdot N_{11} + M_{11} \cdot (N_{21} - N_{11}) + \\
+        &\hphantom{=~~} (M_{21} - M_{11}) \cdot (N_{11} + N_{12}) = \\
+        &= \dots = \\
+        &= M_{21}N_{12} + M_{22}N_{22} = O_{22}
+    \end{align*}
+    
+    \nuffsaid
+    
+b) \textbf{Variante 1:} $T(n) = (n - 1) \cdot t_A \cdot n^2 + n \cdot t_M \cdot n^2 \in \Theta(n^3 \cdot (t_A + t_M))$ \\
+\textbf{Variante 2:} $T(n) = 7 \cdot T\left( \frac{n}{2} \right) + 18 \cdot \left( \frac{n}{2} \right)^2 \in \Theta( n^{\log_{2}{7}} ) \approx \Theta( n^{2,8} )$ (Master-Theorem)

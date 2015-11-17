@@ -1,0 +1,83 @@
+a) Rekursionsbaum für Mergesort
+\newcommand{\treeNodeDistance}{0.5cm}
+\newcommand{\treeTikzNodeDistance}{0.8cm}
+\newcommand{\sortedColor}{black!50!green}
+
+\begin{center}
+	\begin{forest}
+    	for tree={
+        	l sep=\treeNodeDistance
+        },
+        qtree edges
+        [{$\{-5, 13, -32, 7, -3, 17, 23, 12, -35, 19\}$}, name=A 
+            [{$\{-5, 13, -32, 7, -3\}$}, name=B 
+            	[{$\{-5, 13\}$}, name=D 
+                	[\textcolor{blue}{$-5$}, name=J ]
+                    [\textcolor{blue}{$13$}, name=K ]
+                ]
+            	[{$\{-32, 7, -3\}$}, name=E 
+                	[\textcolor{blue}{$-32$}, name=L ]
+                    [{$\{7, -3\}$}, name=H 
+                    	[\textcolor{blue}{$7$}, name=P ]
+                        [\textcolor{blue}{$-3$}, name=Q ]
+                    ]
+                ]
+            ]
+            [{$\{17, 23, 12, -35, 19\}$}, name=C 
+            	[{$\{17, 23\}$}, name=F 
+                	[\textcolor{blue}{$17$}, name=M ]
+                    [\textcolor{blue}{$23$}, name=N ]
+                ]
+            	[{$\{12, -35, 19\}$}, name=G 
+                	[\textcolor{blue}{$12$}, name=O ]
+                    [{$\{-35, 19\}$}, name=I 
+                    	[\textcolor{blue}{$-35$}, name=R ]
+                        [\textcolor{blue}{$19$}, name=S ]
+                    ]
+                ]
+            ]
+        ]
+% left sub-tree
+        \coordinate[between=J and K] (JK);
+        \node[below=4*\treeTikzNodeDistance of JK, color=\sortedColor] (JK_sorted) {$\{-5, 13\}$};
+        \draw[dashed] (J) -- (JK_sorted.north) -- (K);
+%
+        \coordinate[between=P and Q] (PQ);
+		\node[below=\treeTikzNodeDistance of PQ, color=\sortedColor] (PQ_sorted) {$\{-3, 7\}$};
+        \draw[dashed] (P) -- (PQ_sorted.north) -- (Q);
+%
+		\coordinate[between=L and PQ_sorted] (LPQ);
+        \node[below=2.5*\treeTikzNodeDistance of LPQ, color=\sortedColor] (LPQ_sorted) {$\{-32, -3, 7\}$};
+        \draw[dashed] (L) -- (LPQ_sorted.north) -- (PQ_sorted);
+%
+		\coordinate[between=JK_sorted and LPQ_sorted] (JKLPQ);
+        \node[below=\treeTikzNodeDistance of JKLPQ, color=\sortedColor] (JKLPQ_sorted) {$\{-32, -5, -3, 7, 13\}$};
+        \draw[dashed] (JK_sorted) -- (JKLPQ_sorted.north) -- (LPQ_sorted);
+% right sub-tree
+        \coordinate[between=M and N] (MN);
+        \node[below=4*\treeTikzNodeDistance of MN, color=\sortedColor] (MN_sorted) {$\{17, 23\}$};
+        \draw[dashed] (M) -- (MN_sorted.north) -- (N);
+%
+        \coordinate[between=R and S] (RS);
+		\node[below=\treeTikzNodeDistance of RS, color=\sortedColor] (RS_sorted) {$\{-35, 19\}$};
+        \draw[dashed] (R) -- (RS_sorted.north) -- (S);
+%
+		\coordinate[between=O and RS_sorted] (ORS);
+        \node[below=2.5*\treeTikzNodeDistance of ORS, color=\sortedColor] (ORS_sorted) {$\{-35, 12, 19\}$};
+        \draw[dashed] (O) -- (ORS_sorted.north) -- (RS_sorted);
+%
+		\coordinate[between=MN_sorted and ORS_sorted] (MNORS);
+        \node[below=\treeTikzNodeDistance of MNORS, color=\sortedColor] (MNORS_sorted) {$\{-35, 12, 17, 19, 23\}$};
+        \draw[dashed] (MN_sorted) -- (MNORS_sorted.north) -- (ORS_sorted);
+% final node
+		\coordinate[between=JKLPQ_sorted and MNORS_sorted] (sorted_coord);
+        \node[below=\treeTikzNodeDistance of sorted_coord, color=\sortedColor] (sorted) {$\{-35, -32, -5, -3, 7, 12, 13, 17, 19, 23\}$};
+        \draw[dashed] (JKLPQ_sorted) -- (sorted.north) -- (MNORS_sorted);
+% curly braces
+		\draw[decorate,decoration={brace,amplitude=10pt}] (6,0.5) -- (6,-5);
+        \node[anchor=west] at (6.5,-2.25) {Teilen};
+%
+		\draw[decorate,decoration={brace,amplitude=10pt}] (6,-5.5) -- (6,-9.5);
+        \node[anchor=west] at (6.5,-7.5) {Mischen};
+	\end{forest}
+\end{center}

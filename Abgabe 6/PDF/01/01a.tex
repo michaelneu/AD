@@ -1,0 +1,56 @@
+a) Quicksort auf einer verketteten Liste \\
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+private ListElement<T> PreparePartition(ListElement<T> first, ListElement<T> last)
+{
+    T pivot = first.Data;
+    var partition = first.Previous;
+    var element = first;
+
+    while (element != null && element != last.Next)
+    {
+        if (element.Data.CompareTo(pivot) <= 0)
+        {
+            if (partition == null)
+            {
+                partition = first;
+            }
+            else
+            {
+                partition = partition.Next;
+            }
+
+            Swap(element, partition);
+        }
+
+        element = element.Next;
+    }
+
+    Swap(first, partition);
+
+    return partition;
+}
+
+private void Quicksort(ListElement<T> first, ListElement<T> last)
+{
+    if (first != null && last != null && first != last && first.Previous != last)
+    {
+        var partition = PreparePartition(first, last);
+
+        if (partition != null)
+        {
+            Quicksort(first, partition.Previous);
+            Quicksort(partition.Next, last);
+        }
+    }
+}
+\end{minted}
+
+\vspace{0.5cm}
+
+\paragraph{Speicherplatz} Misst man mit den C\#-Garbage-Collection-Tools den Speicherverbrauch mittels \texttt{GC.GetTotalMemory(true)}, so ergibt sich folgende grobe Abschätzung des Platzbedarfes einer Liste der Länge $n$:
+\begin{align*}
+    T_{Memory}(n) &= (n + 1)\cdot 20 + \text{sizeof(System.Console)} + 4 \cdot (n + 1) \\
+    [T_{Memory}] &= \text{Byte}
+\end{align*}
+
+\paragraph{Laufzeit} Die hier gezeigte Implementierung entspricht der Implementierung des Quicksorts auf einem Array, beide finden In-Place auf dem Array/der Liste statt und werden über die selben rekursiven Bedingungen definiert. Die Methode \texttt{PreparePartition} iteriert über die Elemente von \texttt{first} bis \texttt{last}, exakt wie die Array-Implementierung. Da die Laufzeit dieser Implementierung bekannt ist, entspricht die Quicksort-Implementierung auf einer verketteten Liste dieser, weshalb sie sich in $\Theta(n \cdot \log(n))$ befindet. \\

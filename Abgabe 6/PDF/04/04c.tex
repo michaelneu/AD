@@ -1,0 +1,29 @@
+c) Code zum Rekonstruieren eines Suchbaums anhand dessen Preorder-Notation: 
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+private TreeNode<T> CreateFromPreorder(T[] preorder)
+{
+    if (preorder.Length > 0)
+    {
+        // pop the first element
+        var data = preorder.First();
+        preorder = preorder.Skip(1)
+                           .ToArray();
+
+        // split the array into smaller and bigger children
+        var leftChildren = preorder.TakeWhile(x => x.CompareTo(data) <= 0)
+                                   .ToArray();
+
+        var rightChildren = preorder.Skip(leftChildren.Count())
+                                    .ToArray();
+
+        // get the children via recursion
+        var node = new TreeNode<T>(data);
+        node.ChildLeft = CreateFromPreorder(leftChildren);
+        node.ChildRight = CreateFromPreorder(rightChildren);
+
+        return node;
+    }
+
+    return null;
+}
+\end{minted}

@@ -1,0 +1,18 @@
+b) Lottozahlen mit Ringliste
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+public List<int> ChooseNumbers(int n)
+{
+    var takenNumbers = new List<int>();
+
+    for (int i = 0; i < n; i++)
+    {
+        int index = random.Next(list.Count - 1),
+            number = list[index];
+
+        takenNumbers.Add(number);
+        list.Remove(number);
+    }
+
+    return takenNumbers;
+}
+\end{minted}

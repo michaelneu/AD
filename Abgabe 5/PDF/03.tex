@@ -1,0 +1,35 @@
+\section*{Aufgabe 3}
+a) Aus Vorlesung bekannt: $n$ Elemente sind in $i$ Schichten \enquote{untergebracht}. 
+\begin{align*}
+	\sum_{k=0}^i \left( 2^k \right) &= \frac{2^{i + 1} - 1}{2 - 1} \\
+    &= 2^{i + 1} - 1 &\text{(Elemente im Baum)} \\[0.5cm]
+    2^{i + 1} - 1 &= n \\
+    2^{i + 1} &= n + 1 \\
+    i + 1 &= \log(n + 1) \\
+    i &\geq \log(n) \\
+    i &= \lfloor \log(n) \rfloor
+\end{align*}
+
+b) Behauptung: $n_h = \lceil \frac{n}{2^{h+1}} \rceil$
+\begin{itemize}[noitemsep]
+	\item[\textbf{I.A.:}] $h = 0;$
+    $n_0 = \lceil \frac{n}{2^{0 + 1}} \rceil$ \\
+    für $n=7 \Rightarrow n_0 = 4$ $\checkmark$
+	\item[\textbf{I.V.:}] Behauptung gilt für ein $n \in \mathbb{N}$
+	\item[\textbf{I.S.:}]
+      \begin{align*}
+      	n_{h+1} &= \left\lceil \frac{n}{2^{(h + 1) + 1}} \right\rceil \\
+        &= \left\lceil \frac{1}{2} \cdot \frac{n}{2^{h+1}} \right\rceil \\
+        &= \left\lceil \frac{1}{2} \cdot n_h \right\rceil
+      \end{align*}    
+    \item[$\Rightarrow$] Nach dem Prinzip der vollständigen Induktion gilt die Behauptung für alle $n \in \mathbb{N}$
+\end{itemize}
+
+c) Für alle $x$ mit $|x| < 1$ gilt: 
+\begin{align*}
+	\sum_{k=0}^\infty x^k &= \frac{1}{1 - x} &&\text{geometrische Reihe} \\
+    \sum_{k=0}^\infty \left( k \cdot x^{k - 1} \right) &= \frac{1}{(1 - x)^2} &&\text{beide Seiten differenzieren} \\
+    \sum_{k=0}^\infty \left( k \cdot x^k \right) &= \frac{x}{(1 - x)^2} &&\text{beide Seiten mit $x$ multiplizieren}
+\end{align*}
+
+d) Die Reihenfolge kann vertauscht werden, da die Methode \texttt{Heapify} per Rekursion sicherstellt, dass auch alle Unterbäume einem MaxHeap entsprechen. 

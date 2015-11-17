@@ -1,0 +1,50 @@
+b) Exemplarischer Code zum Rekonstruieren eines Binärbaumes anhand der Pre- und Inorder-Notation\footnote{der Algorithmus für die Kombination aus In- und Postorder-Notation entspricht im Wesentlichen dem der Pre- und Inorder-Notation, hier wird lediglich statt des ersten Elements immer das letzte Element des ersten übergebenen Arrays verwendet}: \\
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+private TreeNode<T> CreateFromPreInOrderList(T[] preorder, T[] inorder)
+{
+    if (preorder.Length > 0)
+    {
+        // pop the node first node from the preorder list
+        var data = preorder.First();
+        preorder = preorder.Skip(1)
+                           .ToArray();
+
+        var node = new TreeNode<T>(data);
+
+        // find all positions of the node in the inorder sorting, we can't know
+        // which one will be the correct one, so we'll have to try them all
+
+        for (int i = 0; i < inorder.Length; i++)
+        {
+            if (inorder[i].Equals(data))
+            {
+                // split the inorder list according to the matching element in the inorder list
+                var inorderSplitted = new SplittedArray<T>(inorder, i);
+                
+                var preorderChildLeft = preorder.Take(inorderSplitted.Left.Length)
+                                                .ToArray();
+
+                var preorderChildRight = preorder.Skip(preorderChildLeft.Length)
+                                                 .ToArray();
+
+                // get the node's children using the splitted order lists
+                node.ChildLeft = CreateFromPreInOrderList(preorderChildLeft, inorderSplitted.Left);
+                node.ChildRight = CreateFromPreInOrderList(preorderChildRight, inorderSplitted.Right);
+
+                // validate the resulting sub-tree
+                var inorderReconstructed = node.ToOrderedList(SortOrder.IN);
+                var preorderReconstructed = node.ToOrderedList(SortOrder.PRE).Skip(1);
+
+                if (inorder.SequenceEqual(inorderReconstructed) &&
+                preorder.SequenceEqual(preorderReconstructed))
+                {
+                    // this sub-tree matches the given lists, return this node
+                    return node;
+                }
+            }
+        }
+    }
+    
+    return null;
+}
+\end{minted}

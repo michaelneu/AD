@@ -1,0 +1,54 @@
+\section*{Aufgabe 2}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{minted}[fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos, mathescape=true]{csharp}
+public bool ContainsSum(int[] array)
+{
+	if (array.Length < 2)
+    {
+        return false;
+    }
+    
+	List<int> list = array.ToList();
+    int target = list.Last();
+    
+    list = list.Take(array.Length - 1).ToList();
+    list.Sort(); // stable quicksort --> $\Theta(n\cdot\log(n))$
+    array = list.ToArray();
+    
+    int min = 0,
+    	max = array.Length - 1;
+    
+    while (min < max)
+    {
+    	int sum = array[min] + array[max];
+        
+    	if (sum == target)
+        {
+      		return true;
+        }
+        else if (sum < target)
+        {
+        	min++;
+        }
+        else
+        {
+        	max--;
+        }
+    }
+    
+    return false;
+}
+\end{minted}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.375\textwidth}
+	\paragraph*{Idee} Der Array wird zuerst aufsteigend sortiert. Danach wird der Array durchlaufen, mit 2 Indizes werden sowohl das vordere als auch das hintere Element am jeweiligen Index kombiniert. Entspricht diese Summe dem Zielwert, so endet der Algorithmus und liefert \texttt{true}. Ist die Summe kleiner als der Zielwert, so wird der linke Index nach rechts verschoben. Aufgrund der aufsteigenden Sortierung des Arrays wird nun für die Summe der nächstgrößere linke Wert verwendet. Ist allerdings die Summe der beiden Zahlen größer als der Zielwert, so wird der hintere Index nach links verschoben, was -- ebenfalls aufgrund der aufsteigenden Sortierung -- zur Folge hat, dass die Summe im nächsten Iterationsschritt kleiner wird. Sobald beide Indizes identisch sind und keine \enquote{passende} Summe gefunden wurde bricht der Algorithmus automatisch ab und liefert \texttt{false}.
+\end{minipage} \\[1cm]
+
+\paragraph*{Laufzeit}
+Der Algorithmus basiert auf einem sortierten Array, welcher über einen im Framework bereitgestellten Sortieralgorithmus erstellt wird\footnote{Die tatsächliche Implementierung kann sich unterscheiden: die LINQ-\texttt{Sort}-Implementierung verwendet bspw. einen stabilen Quicksort. Alle Implementierungen besitzen allerdings die Laufzeit $\Theta(n\cdot\log(n))$}. Des Weiteren beinhaltet er nur eine \texttt{while}-Schleife, welche nach maximal $n$ Schritten aufgrund der Annhäherung beider Enden (\texttt{min++} in Zeile 28 und \texttt{max--} in Zeile 32) zueinander terminiert. Somit kann die Laufzeit wie folgt angegeben werden:
+
+\begin{align*}
+	T(n) &= \Theta(n \cdot \log(n)) + \Theta(n) \\
+    &= \Theta(n \cdot \log(n))
+\end{align*}
