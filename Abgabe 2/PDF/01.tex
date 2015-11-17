@@ -1,0 +1,24 @@
+\section*{Aufgabe 1}
+	a) Registermaschinen-Code für $\sum_{i=0}^n i^2$\\
+    \begin{minted}[framesep=2mm, linenos, xleftmargin=6mm]{python}
+# shorthand python check for correct results (n = 10)
+# >>> sum([i**2 for i in range(11)])
+
+LDK 1
+STA 100
+INP 101
+
+    MUL 101
+    ADD 102
+    STA 102
+    
+    LDA 101
+    SUB 100
+    STA 101
+
+    JGE 8
+
+HLT 99
+    \end{minted}
+    
+    b) Nach Absprache mit Prof. Dr. Kern wurde die bereits im Vorfeld implementierte MooseMachine von Robert Kobiella (Fork zur Modularisierung des Compilers) und Michael Neu verwendet. Diese beinhaltet die Grundzüge einer RAM, fügt dieser allerdings noch einige weitere Befehle -- wie bspw. die Möglichkeit einer Konsolenausgabe -- hinzu. Der Quellcode dieser RAM ist frei unter der MIT Lizenz unter \texttt{https://github.com/minedev/MooseMachine} verfügbar.

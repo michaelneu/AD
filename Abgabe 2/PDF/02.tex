@@ -1,0 +1,36 @@
+\newpage
+\section*{Aufgabe 2}
+	\begin{enumerate}[nolistsep, noitemsep, label=\alph*)]
+    	\item \textbf{Wahr}, $34 + 23 + 17 = 74 \in O(1)$
+        \item \textbf{Wahr}, \begin{align*}
+                2n^3 + 6n^2 + 5n + 47 &= c \cdot n^3 \\
+                n^3 \cdot \left( 2 + \frac{6}{n} + \frac{5}{n^2} + \frac{47}{n^3} \right) &= c \cdot n^3 \\
+                &\Rightarrow  c = 3 \\
+                &\Rightarrow \in O(n^3)
+            \end{align*}
+        \item $2^{n + 1} = O(2^n)$ und $2^{2n} = O(2^n)$
+        	\subitem -- \textbf{Wahr}, $2^{n + 1} = 2^n \cdot 2 \in O(2^n)$
+            \subitem -- \textbf{Falsch}, $2^{2n} = 2^n \cdot 2^n = c \cdot 2^n \Rightarrow c = 2^n \not\in O(2^n)$
+		\item[]
+		\item[]
+        \item \textbf{Wahr}, $\log(n!) = \Theta(n \log n)$
+        \item[] \begin{align*}
+                \log(n!) &\leq c \cdot n \cdot \log(n) \\
+                \frac{\log(n!)}{\log(n)} &\leq c \cdot n \\
+                \log_n(n!) &\leq c \cdot n    \\
+                \text{Stirling-Formel} \hspace{0.25cm} \rightarrow \hspace{0.5cm} \log_n\left( \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n \right) &\leq c \cdot n \\
+                \frac{1}{2} \cdot \log_n( 2 \pi ) + \frac{1}{2} \log_n(n) + n \cdot \left( \log_n(n) - \log_n(e) \right) &\leq c \cdot n\\
+                \frac{\frac{\log_n( 2 \pi )}{2} + \frac{1}{2} + n - n \cdot \log_n(e)}{n} &\leq c \\
+                \frac{\log( 2 \pi )}{2n \cdot \log(n)} + \frac{1}{2n} + 1 - \frac{\log(e)}{\log(n)} &\rightarrow 1 \leq c
+            \end{align*}
+        \item $2^n = O(n!)$ und $n! = O(n^n)$ \begin{align*}
+                2^n &= n! \\
+                2^n &= n \cdot (n - 1) \cdot (n - 2) \cdot ... \cdot 1 \\
+                    &= n^n + x \cdot n^{n-1} + ... \approx n^n \text{ (da $n^n$ den höchsten Rang der Funktion hat)} \\
+                2^n &\not\in O(n^n) \text{ , aber } n! \in O(n^n)
+            \end{align*}
+		\item \textbf{Falsch}, $10^{-3}n^{1,025} = \Theta(\sqrt{n})$ \begin{align*}
+        		10^{-3} \cdot n \leq 10^{-3} \cdot n^{1,025} &\Rightarrow 10^{-3} \cdot n^{1,025} \in \Omega(n) \\
+                &\Rightarrow 10^{-3} \cdot n^{1,025} \not\in \Theta(n)
+			\end{align*}
+    \end{enumerate}

@@ -1,0 +1,13 @@
+\section*{Aufgabe 3}
+	\begin{align*}
+    	\sum_{k=0}^\infty \frac{k^2}{2^k} &= O(1) \\
+        &\text{Nachweis auf Konvergenz mit Quotientenkriterium: } \\[0.5cm]
+        q &= \frac{\frac{(k + 1)^2}{2^{k + 1}}}{\frac{k^2}{2^k}} \\
+        &= \frac{(k + 1)^2}{2 \cdot k^2} \\
+        &= \frac{k^2 + 2k + 1}{2 \cdot k^2} \\
+        &= \frac{k^2 \cdot (1 + \frac{2}{k} + \frac{1}{k^2})}{2 \cdot k^2} \\
+        &\rightarrow \frac{1}{2} \\[0.5cm]
+        q &< 1 \Rightarrow \text{Konvergenz}
+    \end{align*}
+    
+    Da die Reihe beim Konvergieren einen konstanten Wert annimmt kann sie mit $O(1)$ beschrieben werden.
