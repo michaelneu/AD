@@ -1,0 +1,47 @@
+a) Insertionsort \\[0.5cm]
+
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+public void Sort(int[] array)
+{
+    for (int j = array.Length - 2; j >= 0; j--)
+    {
+        int key = array[j];
+        int i = j;
+
+        while (i < array.Length - 1 && array[i + 1] < key)
+        {
+            array[i] = array[i + 1];
+            i++;
+        }
+
+        array[i] = key;
+    }
+}
+\end{minted}
+
+\textbf{Korrektheit} \\
+
+Behauptung: Nach dem $i$-ten Schleifendurchlauf gilt: $a_0 \leq \dots \leq a_i$
+\begin{itemize}[noitemsep]
+    \item[\textbf{I.A.:}] $i = 1$: 
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item In der Schleife wird $key = a[j] = a[|a| - 2]$ und $i = j - 1 = |a| - 3$
+        \item 1. Fall: $a[i + 1] \geq key$, dann wird die while-Schleife nicht betreten, $a[j]$ bleibt $a[j]$ und es gilt: $a[i] \geq a[j]$
+        \item 2. Fall: $a[i] < key$, dann wird die while-Schleife betreten und es 
+    \end{itemize}
+    \item[\textbf{I.V.:}] Behauptung gilt für $j - 1$
+    \item[\textbf{I.S.:}] 
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item Nach I.V. gilt nach dem $(j - 1)$-ten Schleifendurchlauf: $a_0 \leq \dots \leq a_{j - 1}$
+        \item Im $j$-ten Schleifendurchlauf wird $key = a[j]$ und $i = j - 1$
+        \item In der while-Schleife wird nun mittels Iteration über die bereits sortierte Folge die Position gesucht, an der das neue Element eingeordnet werden muss
+        \item Je Iteration wird der Laufindex um 1 erhöht und nicht ungültig
+        \item Da der aktuelle Wert gesichert ist, ist eine Tauschlücke entstanden, die genutzt wird um die Werte bei Iteration jeweils um eine Position nach links zu versetzen
+        \item Am Schluss wird die Zielposition mit dem gesicherten Wert gefüllt, so dass: 
+        \item[] $a_0 \leq \dots \leq key \leq \dots \leq a_{j - 1}$, d.h. $a_0 \leq \dots \leq a_j$ (Ende bei $j = 0$)
+    \end{itemize}
+\end{itemize}
+
+\nuffsaid
+
+\textbf{Laufzeit:} $T(n) = \frac{n(n - 1)}{4} \in \Theta(n^2)$

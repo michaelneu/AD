@@ -1,0 +1,43 @@
+b) Bubblesort
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+public void Sort(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        for (int j = array.Length - 2; j >= i; j--)
+        {
+            if (array[j] < array[j + 1])
+            {
+                int h = array[j];
+
+                array[j] = array[j + 1];
+                array[j + 1] = h;
+            }
+        }
+    }
+}
+\end{minted}
+
+\textbf{Korrektheit} \\
+Behauptung: $n$ Elemente eines Arrays der Länge $|a| = n$ werden korrekt sortiert.
+\begin{itemize}[noitemsep]
+    \item[] \textbf{Innere for-Schleife:}
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item Nach $j$-Schleifendurchläufen gilt: \\
+    	array$[0] =$ kleinstes Element des Arrays, da in jedem Schritt das kleinere Element nach vorne getauscht wird: 
+        $if (array[j] < array[j+1])$ \\
+        $\Rightarrow$ Vertauschung von array$[j]$ mit array$[j+1]$ \\
+        Es gilt $\forall a \in \{n-i+1;...;i\}$ array$[n-i] \leq$ array$[a]$ \\
+    \end{itemize}
+    \item[] \textbf{Äußere for-Schleife:}
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item Innere for-Schleife wird $i$ mal wiederholt.
+        \item Im $i$-ten Schleifendurchlauf gilt: \\
+        $\forall a,b \in {0;...;i-1}$ : array$[a] \leq$ array$[b]$, falls $a \leq b$
+    \end{itemize}
+    \item[$\Rightarrow$] Array nach $n^2$ Durchläufen komplett sortiert für $n \in \mathbb{N}$
+\end{itemize}
+
+\nuffsaid
+
+\textbf{Laufzeit: } $T(n) = \frac{n(n - 1)}{2} \in \Theta(n^2)$

@@ -1,0 +1,67 @@
+\section*{Aufgabe 1}
+\begin{enumerate}[nolistsep, label=\alph*)]
+	\item Die Implementierung der Sortieralgorithmen entsprechen im Wesentlichen denen aus der Vorlesung. 
+	\item Demonstration verschiedener Sortieralgorithmen: 
+\end{enumerate}
+
+\newcommand{\arrayfontsize}{\fontsize{3mm}{3.5mm}}
+\begin{longtable}{*{3}{|p{0.31\textwidth}}|}
+	\hline
+	\textbf{Insertionsort} & \textbf{Bubblesort} & \textbf{Selectionsort} \\
+    \hline
+    \endhead
+    \arrayfontsize $\{\textcolor{red}{-5}, 13, -32, 7, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, 23, 12, -35, \textcolor{red}{19}\}$ & \arrayfontsize $\{\textcolor{red}{-5}, 13, -32, 7, -3, 17, 23, 12, \textcolor{blue}{-35}, 19\}$ \\
+\hline
+\arrayfontsize $\{-5, \textcolor{red}{13}, -32, 7, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, 23, 12, \textcolor{red}{-35}, 19\}$ & \arrayfontsize $\{\textcolor{red}{-35}, 13, -32, 7, -3, 17, 23, 12, \textcolor{blue}{-5}, 19\}$ \\
+\hline
+\arrayfontsize $\{-5, 13, \textcolor{red}{-32}, 7, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, 23, \textcolor{red}{12}, -35, 19\}$ & \arrayfontsize $\{-35, \textcolor{red}{13}, \textcolor{blue}{-32}, 7, -3, 17, 23, 12, -5, 19\}$ \\
+\hline
+\arrayfontsize $\{\textcolor{red}{-32}, -5, 13, 7, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, 23, \textcolor{red}{-35}, \textcolor{blue}{12}, 19\}$ & \arrayfontsize $\{-35, \textcolor{red}{-32}, \textcolor{blue}{13}, 7, -3, 17, 23, 12, -5, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, 13, \textcolor{red}{7}, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, \textcolor{red}{23}, -35, 12, 19\}$ & \arrayfontsize $\{-35, -32, \textcolor{red}{13}, 7, -3, 17, 23, 12, \textcolor{blue}{-5}, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, \textcolor{red}{7}, 13, -3, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, \textcolor{red}{-35}, \textcolor{blue}{23}, 12, 19\}$ & \arrayfontsize $\{-35, -32, \textcolor{red}{-5}, 7, -3, 17, 23, 12, \textcolor{blue}{13}, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, 7, 13, \textcolor{red}{-3}, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, \textcolor{red}{-35}, \textcolor{blue}{12}, \textcolor{blue}{23}, 19\}$ & \arrayfontsize $\{-35, -32, -5, \textcolor{red}{7}, \textcolor{blue}{-3}, 17, 23, 12, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, \textcolor{red}{-3}, 7, 13, 17, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, 17, \textcolor{red}{-35}, 12, \textcolor{blue}{19}, \textcolor{blue}{23}\}$ & \arrayfontsize $\{-35, -32, -5, \textcolor{red}{-3}, \textcolor{blue}{7}, 17, 23, 12, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, -3, 7, 13, \textcolor{red}{17}, 23, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, \textcolor{red}{17}, -35, 12, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, \textcolor{red}{7}, 17, 23, 12, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, -3, 7, 13, 17, \textcolor{red}{23}, 12, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, \textcolor{red}{-35}, \textcolor{blue}{17}, 12, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, \textcolor{red}{7}, 17, 23, 12, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, -3, 7, 13, 17, 23, \textcolor{red}{12}, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, -3, \textcolor{red}{-35}, \textcolor{blue}{12}, \textcolor{blue}{17}, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, \textcolor{red}{17}, 23, \textcolor{blue}{12}, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, -3, 7, \textcolor{red}{12}, 13, 17, 23, -35, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, \textcolor{red}{-3}, -35, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, \textcolor{red}{12}, 23, \textcolor{blue}{17}, 13, 19\}$ \\
+\hline
+\arrayfontsize $\{-32, -5, -3, 7, 12, 13, 17, 23, \textcolor{red}{-35}, 19\}$ & \arrayfontsize $\{-5, 13, -32, 7, \textcolor{red}{-35}, \textcolor{blue}{-3}, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, \textcolor{red}{23}, 17, \textcolor{blue}{13}, 19\}$ \\
+\hline
+\arrayfontsize $\{\textcolor{red}{-35}, -32, -5, -3, 7, 12, 13, 17, 23, 19\}$ & \arrayfontsize $\{-5, 13, -32, \textcolor{red}{7}, -35, -3, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, \textcolor{red}{13}, 17, \textcolor{blue}{23}, 19\}$ \\
+\hline
+\arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, 23, \textcolor{red}{19}\}$ & \arrayfontsize $\{-5, 13, -32, \textcolor{red}{-35}, \textcolor{blue}{7}, -3, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, \textcolor{red}{17}, 23, 19\}$ \\
+\hline
+\arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, \textcolor{red}{19}, 23\}$ & \arrayfontsize $\{-5, 13, -32, \textcolor{red}{-35}, \textcolor{blue}{-3}, \textcolor{blue}{7}, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, \textcolor{red}{17}, 23, 19\}$ \\
+\hline
+ & \arrayfontsize $\{-5, 13, \textcolor{red}{-32}, -35, -3, 7, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, \textcolor{red}{23}, \textcolor{blue}{19}\}$ \\
+ \hline
+ & \arrayfontsize $\{-5, 13, \textcolor{red}{-35}, \textcolor{blue}{-32}, -3, 7, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, \textcolor{red}{19}, \textcolor{blue}{23}\}$ \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{13}, -35, -32, -3, 7, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, 19, \textcolor{red}{23}\}$ \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{-35}, \textcolor{blue}{13}, -32, -3, 7, 12, 17, 19, 23\}$ & \arrayfontsize $\{-35, -32, -5, -3, 7, 12, 13, 17, 19, \textcolor{red}{23}\}$ \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{-35}, \textcolor{blue}{-32}, \textcolor{blue}{13}, -3, 7, 12, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{-35}, -32, \textcolor{blue}{-3}, \textcolor{blue}{13}, 7, 12, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{-35}, -32, -3, \textcolor{blue}{7}, \textcolor{blue}{13}, 12, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{-5, \textcolor{red}{-35}, -32, -3, 7, \textcolor{blue}{12}, \textcolor{blue}{13}, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{\textcolor{red}{-5}, -35, -32, -3, 7, 12, 13, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{\textcolor{red}{-35}, \textcolor{blue}{-5}, -32, -3, 7, 12, 13, 17, 19, 23\}$ &   \\
+ \hline
+ & \arrayfontsize $\{\textcolor{red}{-35}, \textcolor{blue}{-32}, \textcolor{blue}{-5}, -3, 7, 12, 13, 17, 19, 23\}$ &   \\
+ \hline
+\end{longtable}

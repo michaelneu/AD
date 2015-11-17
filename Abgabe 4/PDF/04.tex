@@ -1,0 +1,55 @@
+\section*{Aufgabe 4}
+a) Insertionsort (rekursiv)
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+private void Sort(int[] array, int start)
+{
+    if (start < array.Length)
+    {
+        int key = array[start],
+            i = start - 1;
+
+        while (i >= 0 && array[i] > key)
+        {
+            array[i + 1] = array[i];
+            i--;
+        }
+
+        array[i + 1] = key;
+        Sort(array, start + 1);
+    }
+}
+
+public void Sort(int[] array)
+{
+    Sort(array, 0);
+}
+\end{minted}
+
+
+\textbf{Laufzeit/Rekursionsgleichung}
+\begin{itemize}[noitemsep]
+	\item Basis: $T(1) = 4$
+	\item $T(n) = T(n-1) + 4n = T(n-2) + 4(n-1) + 4n = \ldots = \displaystyle \sum_{i=1}^{n} 4n = \frac{4n(n-1)}{2}$
+	\item[$\Rightarrow$] $T(n) \in \Theta(n^2)$
+\end{itemize}
+
+
+b) Mergesort\footnote{Die Methode \texttt{Merge} entspricht der aus den Vorlesungsunterlagen} (iterativ)
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+public void Sort(int[] array)
+{
+    for (int i = 1; i < array.Length; i *= 2)
+    {
+        for (int j = 0; j < array.Length; j += 2 * i)
+        {
+            int first = j,
+                last = Math.Min(j + i, array.Length - 1);
+            
+            Merge(array, first, last, (first + last) / 2);
+        }
+    }
+}
+\end{minted}
+
+\textbf{Laufzeit: } Die Halbierungen der Felder benötigen insgesamt  $\Theta(\log(n))$ Zeitschritte. Das Mischen (in der Funktion \textit{Merge}) benötigt pro Iteration weitere $\Theta(n)$ Zeitschritte. \\
+$\Rightarrow T(n) \in \Theta(n \log(n))$ (selbe Laufzeit wie rekursive Implementierung)

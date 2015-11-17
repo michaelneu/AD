@@ -1,0 +1,26 @@
+Um eine komplette Gleichverteilung eines Testarrays zu gewährleisten wird im folgenden Ausschnitt ein solcher zuerst mit Zahlen von $-\frac{n}{2}$ bis $\frac{n}{2}$ befüllt und dann durch Umsortieren \enquote{zufällig gemacht}. \\
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+public int[] GenerateArray(int length)
+{
+    var random = new Random();
+	int[] array = new int[length];
+    int half = length / 2;
+    
+    for (int i = 0; i < length; i++)
+    {
+    	array[i] = i - length;
+    }
+    
+    
+    for (int i = 0; i < length; i++)
+    {
+    	int index = random.Next(length - 1),
+        	temp = array[0];
+            
+        array[0] = array[index];
+        array[index] = temp;
+    }
+    
+    return array;
+}
+\end{minted}

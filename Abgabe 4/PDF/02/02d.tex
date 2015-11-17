@@ -1,0 +1,67 @@
+d) Quicksort
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+private int PreparePartition(int[] array, int first, int last)
+{
+    int index = RandomIndex(first, last),
+    Swap(array, index, first);
+
+    int pivot = array[first],
+        partition = first - 1;
+
+    for (int i = first; i <= last; i++)
+    {
+        if (array[i] <= pivot)
+        {
+            partition++;
+
+            Swap(array, i, partition);
+        }
+    }
+
+    Swap(array, first, partition);
+
+    return partition;
+}
+
+private void QuickSort(int[] array, int first, int last)
+{
+    if (first < last)
+    {
+        int partition = PreparePartition(array, first, last);
+
+        QuickSort(array, first, partition - 1);
+        QuickSort(array, partition + 1, last);
+    }
+}
+
+public void Sort(int[] array)
+{
+    QuickSort(array, 0, array.Length - 1);
+}
+\end{minted}
+\vspace{-0.3cm}
+\textbf{Korrektheit} \\
+\begin{itemize}[nolistsep, noitemsep]
+    \item Aufrufbedingung für \texttt{PreparePartition}: $first, last \in \{0, \dots, |a| - 1\}$ und $first < last$
+    \item $index \in \{first, \dots, last\}$ 
+    \item Vertauschen von von $a[index]$ mit $a[first]$
+    \item Pivot-Element ist das erste Element des Bereichs $a[first:last]$, somit das zuvor vertauschte zufällige Element
+    \item $partition = first - 1$
+    \item Beginn des \enquote{eigentlichen} Sortierens, Iteration über den Bereich $a[first:last]$
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item $i \in \{first, last\}$, $i$ wird jeden Schleifendurchlauf um 1 erhöht
+        \item Fallunterscheidung: 
+        \item[] \begin{itemize}[nolistsep, noitemsep]
+        	\item[1. Fall:] $a[i] \leq pivot$: $partition$ wird um 1 nach rechts verschoben, Element $a[i]$ wird mit dem Element links neben der Grenze vertauscht
+            \item[] $\Rightarrow a[partition - 1] \leq a[i]$
+            \item[2. Fall:] $a[i] > pivot$: Nichts wird verändert
+        \end{itemize}
+    \end{itemize}
+    \item Vertauschen des Elements $a[first]$ mit $a[partition]$
+    \item $\Rightarrow a[first] \leq \dots \leq a[partition] \leq \dots \leq a[last]$
+\end{itemize}
+
+\nuffsaid
+
+
+\textbf{Laufzeit: } Da das Vertauschen des ersten Elements mit einem zufälligen Element des Bereiches $a[first:last]$ eine atomare Operation ist änder sich die Laufzeit des Algorithmus nicht und somit bleibt diese $\Theta(n \cdot \log(n))$

@@ -1,0 +1,46 @@
+c) Selectionsort
+\begin{minted}[framesep=0mm, linenos, xleftmargin=6mm, fontsize=\fontsize{8.5pt}{10.2pt}, tabsize=4]{csharp}
+public void Sort(int[] array)
+{
+    for (int i = array.Length - 1; i >= 0; i--)
+    {
+        int max = i;
+
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if (array[j] > array[max])
+            {
+                max = j;
+            }
+        }
+
+        int temp = array[i];
+        array[i] = array[max];
+        array[max] = temp;
+    }
+}
+\end{minted}
+
+\textbf{Korrektheit}
+
+Behauptung: Nach jedem $i$-ten Schleifendurchlauf gilt (Schleifeninvariante): $a_{n-i} \leq \ldots \leq a_n$ mit $n = |array| - 1$
+\begin{itemize}[noitemsep]
+    \item[\textbf{I.A.:}] $i = 0$: 
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item In der äußeren Schleife wird $i = |array| - 1$ und $max = i$
+        \item In der inneren Schleife wird $j = i - 1 \not \geq 0$. Die Vorbedigung der Schleife ist nicht erfüllt, der Rumpf wird nicht ausgeführt.
+        \item Vertauschung von $a[i]$ mit $a[max] = a[i]$. Es gilt $a_{n-i} = a_n \leq a_n$
+    \end{itemize}
+    \item[\textbf{I.V.:}] Behauptung gilt für $i -1$
+    \item[\textbf{I.S.:}] $i-1 \rightarrow i$
+    \item[] \begin{itemize}[nolistsep, noitemsep]
+    	\item Nach I.V. gilt $a_{n-i} \leq a_{n-(i-1)} \leq \ldots \leq a_n$
+        \item Im $i$-ten Schleifendurchlauf ist $i$ der Index des letzten Elements der unsortierten Folge
+        \item In der inneren Schleife wird die Position des Maximums der unsortieren Folge bestimmt und in $max$ gespeichert. Pro Schleifendurchlauf wird der Laufindex um $1$ verringert und nicht ungültig.
+        \item Das letzte Element der unsortierten Folge ($a[i]$) wird mit dem Maximum ebendieser ($a[max]$) vertauscht, so dass: $a_{n-i} \leq a[max] = a_{n-(i-1)} \leq \ldots \leq a_n$
+        \item D.h. $a_{n-i} \leq \ldots \leq a_n$
+    \end{itemize}
+    \item[$\Rightarrow$] Behauptung gilt für alle $i \in \mathbb{N}$
+\end{itemize} \nuffsaid
+
+\textbf{Laufzeit}: $T(n) = \frac{n(n-1)}{2} \in \Theta(n^2)$
