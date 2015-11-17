@@ -1,0 +1,6 @@
+\section*{Aufgabe 1}
+	\begin{enumerate}[nolistsep, label=\alph*)]
+    	\item Der rekursive Algorithmus ist leichter herzuleiten, bietet allerdings -- ohne Tail Call Optimization -- die generelle Gefahr eines Stackoverflows. Dieses Problem ist beim iterativen Algorithmus nicht vorhanden. Ebenso findet bei der iterativen Implementierung des ggT jede Berechnung auf dem selben Stack statt, was zur Folge hat, dass -- nicht wie bei einer rekursiven Implementierung ohne Tail Call Optimization -- die Speicherinhalte der benötigten Variablen nicht auf einen neuen Stack kopiert werden müssen. 
+        \item[] Um ein möglichst performantes Programm zu schreiben sollte man somit den iterativen Algorithmus vorziehen. 
+        \item \texttt{ggT(a, b) $\cdot$ kgV(a, b) $=$ a $\cdot$ b}
+    \end{enumerate}

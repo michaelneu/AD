@@ -1,0 +1,40 @@
+\vspace{-1.5cm}
+
+\section*{Aufgabe 3}
+	a) Definition \\[0.25cm]
+    
+	\begin{tabularx}{\textwidth}{X X}
+    	Matrix = (Objekte $O_{Matrix}$, Funktionen $F_{Matrix}$) mit:
+        {\begin{align*}
+            O_{Matrix} &= int[m][n] \\
+            F_{Matrix} &= \{ Add, Mul\}
+        \end{align*}}
+        &
+        Signaturen
+        {\begin{align*}
+            Add:\hspace{1cm} O_{Matrix} \times O_{Matrix} & \rightarrow O_{Matrix} \\
+            Mul:\hspace{1cm} O_{Matrix} \times O_{Matrix} & \rightarrow O_{Matrix}
+        \end{align*}}
+    \end{tabularx}
+    
+    b) Ergebnisse der Berechnungen \\[0.25cm]
+    \bgroup
+	\def\arraystretch{1.1}
+        \begin{tabularx}{\textwidth}{|l|X||l|X|}
+            \hline
+            \textbf{Aufruf} & \textbf{Ausgabe} & \textbf{Aufruf} & \textbf{Ausgabe} \\
+            \hline
+                \texttt{A.Add(A)} & $\begin{pmatrix} 2 & 4 \\ 6 & 8 \end{pmatrix}$ 
+                    & 
+                \texttt{A.Mult(A)} & $\begin{pmatrix} 7 & 10 \\ 15 & 22 \end{pmatrix}$ \\
+            \hline
+                \texttt{A.Add(B)} & Exception, Matrizengröße stimmt nicht überein
+                    & 
+                \texttt{A.Mult(B)} & $\begin{pmatrix} 9 & 12 & 15 \\ 19 & 26 & 33 \end{pmatrix}$ \\
+            \hline
+                \texttt{B.Add(B)} & $\begin{pmatrix} 2 & 4 & 6 \\ 8 & 10 & 12 \end{pmatrix}$ 
+                    & 
+                \texttt{B.Mult(B)} & Exception, Matrizengröße stimmt nicht überein \\
+            \hline
+        \end{tabularx}
+    \egroup

@@ -1,0 +1,20 @@
+\section*{Aufgabe 4}
+	Sei $M$ eine Matrix der Größe $n \times n$, dann benötigt der Additionsalgorithmus für $M + M$ genau $n \cdot n = n^2$ Einzelschritte, der Multiplikationsalgorithmus für $M \cdot M$ benötigt $n \cdot n \cdot n = n^3$ Einzelschritte zur Berechnung des Ergebnisses. Testet man nun mit einer bspw. $500 \times 500$ Matrix wie viele Einzelschritte die CPU im Durchschnitt pro Millisekunde durchführen kann, so kann man dieses Ergebnis skalieren und durch Ziehen der 2. bzw. 3. Wurzel aus dem Ergebnis die maximale Größe der Matrix berechnen. \\
+    Folgende Tabelle wurde auf einem Intel Core i7-2670QM auf Windows 7 unter .NET 4.5 erzeugt: \\[0.5cm]
+    
+    \bgroup
+	\def\arraystretch{1.2}
+        \begin{tabularx}{\textwidth}{|l|X|X|}
+            \hline
+            \textbf{Ziel} & \textbf{Größe der Matrix für Addition} & \textbf{Größe der Matrix für Multiplikation} \\
+            \hline
+            1 Minute & 44424 $\times$ 44424 & 1241 $\times$ 1241 \\
+            \hline
+            2 Minuten & 62826 $\times$ 62826 & 1563 $\times$ 1563 \\
+            \hline
+            5 Minuten & 99337 $\times$ 99337 & 2122 $\times$ 2122 \\
+            \hline
+            10 Minuten & 140483 $\times$ 140483 & 2674 $\times$ 2674 \\
+            \hline
+        \end{tabularx}
+    \egroup
