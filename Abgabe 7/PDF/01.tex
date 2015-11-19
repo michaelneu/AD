@@ -1,0 +1,25 @@
+\section*{Aufgabe 1}
+\paragraph{Implementierung} Siehe Anhang
+
+\paragraph{Laufzeit Einfügen} Sowohl rekursiv, als auch iterativ gilt: \\
+    Best-Case: $\Theta(1)$ \\
+    Worst-Case: $\Theta(n)$ \\
+    Average-Case: ?
+
+    \begin{itemize}[noitemsep]
+        \item \enquote{Richtigen} Baumknoten finden\footnote{siehe Beweis der Laufzeit für Suchen in einem Binärbaum, Vorlesung 11}: $\Theta(\log(n))$
+        \item Neuen Knoten erstellen und als Nachfolger festlegen: $\Theta(1)$
+        \item[$\Rightarrow$] Average-Case: $\Theta(\log(n))$
+    \end{itemize}
+
+\paragraph{Laufzeit Löschen} Sowohl rekursiv, als auch iterativ gilt: \\
+    Best-Case: $\Theta(1)$ \\
+    Worst-Case: $\Theta(n)$ \\
+    Average-Case: ?
+
+    \begin{itemize}[noitemsep]
+        \item Den zu löschenden Baumknoten finden\footnotemark[1]: $\Theta(\log(n))$
+        \item Den ersetzenden Knoten finden\footnotemark[1]: $\Theta(\log(n))$
+        \item Elterneigenschaften setzen: $\Theta(1)$
+        \item[$\Rightarrow$] Average-Case: $\Theta(\log(n))$
+    \end{itemize}

@@ -1,0 +1,31 @@
+\section*{Aufgabe 4}
+\paragraph{Idee} Nach dem Einfügen aller Elemente in den AVL-Baum wird dieser in der Inorder-Notation ausgegeben. Da der AVL-Baum ein balancierter \textit{Suchbaum} ist wird bei der Inorder-Notation eine sortierte Liste ausgegeben. 
+
+\paragraph{Laufzeit} \enquote{Sortieren} von $n$ Elementen: 
+\begin{itemize}[nolistsep, noitemsep]
+	\item Ein Element in den Baum einfügen: $\Theta(\log(n))$
+    \item $n$ Elemente in den Baum einfügen: $n \cdot \Theta(\log(n)) = \Theta(n \cdot \log(n))$
+    \item Die hier angegebene Implementierung des \enquote{Sortierens} kopiert mit einer Laufzeit von $\Theta(n)$ alle Werte aus dem Baum zurück in den Array. Da dies nur eine \enquote{Convenience-Methode} ist, die ein In-Place-Sortieren emuliert und $\Theta(n\cdot \log(n) + n) = \Theta(n \cdot \log(n))$ gilt, kann dies für die Laufzeitberechnung vernachlässigt werden
+    \item Da das Sortieren vergleichsbasierter Algorithmen die untere Schranke $\Theta(n \cdot \log(n))$ besitzt und der AVL-Baum Vergleiche zum Einfügen benötigt, ist dies die beste zu erreichende Laufzeit
+\end{itemize}
+
+\paragraph{Implementierung} Die Implementierung entspricht der des AVL-Baum aus der Vorlesung, im Anhang befindet sich eine mehr objektorientiertere Version dieser Implementierung. 
+
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+public static void Sort<T>(T[] values) where T : IComparable
+{
+    var avl = new AVLTree<T>();
+
+    foreach (var item in values)
+    {
+        avl.Insert(item);
+    }
+
+    var avlList = avl.ToList();
+
+    for (int i = 0; i < values.Length; i++)
+    {
+        values[i] = avlList[i];
+    }
+}
+\end{minted}
