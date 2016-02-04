@@ -1,0 +1,26 @@
+\section*{Aufgabe 2}
+
+\begin{minipage}{0.5\textwidth}
+    \begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{python}
+def mod_1(n): 
+	return n - int(n)
+
+def h(s): 
+	m = 1000
+	x = (5**0.5 - 1) / 2
+
+	return int(m * mod_1(s * x))
+
+for i in [61, 62, 63, 64, 65]: 
+	print i, h(i)
+    \end{minted}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\begin{align*}
+    	h(61) &= 700 \\
+        h(62) &= 318 \\
+        h(63) &= 936 \\
+        h(64) &= 554 \\
+        h(65) &= 172
+    \end{align*}
+\end{minipage}

@@ -1,0 +1,14 @@
+\section*{Aufgabe 3}
+\begin{align*}
+	X_{ij} &= \left\{ \begin{matrix}
+    	1 & \text{Element $i$ in der Liste $j$} \\
+        0 & \text{Element nicht in der Liste}
+    \end{matrix}\right. \\
+    P_{ij} &= \frac{1}{m} \\
+    E[X_{ij}] &= 1 \cdot P_{ij} + 0 \cdot (1 - P_{ij}) \\
+    X_j &= \sum_{i = 0}^n X_{ij} \\
+    E[X_j] &= E\left[ \sum_{i = 1}^n X_{ij} \right] = \\
+    &= \sum_{i = 1}^n \cdot E[X_{ij}] = \\
+    &= \sum_{i = 1}^n \frac{1}{m} = \\
+    &= \frac{n}{m}
+\end{align*}

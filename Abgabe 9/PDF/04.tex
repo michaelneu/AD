@@ -1,0 +1,36 @@
+\section*{Aufgabe 4}
+Implementierung erfolgte in Python, vgl. Anhang. 
+
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{python}
+from hash import *
+
+def test_table(implementation, numbers): 
+	collisions = 0
+
+	for i in numbers: 
+		collisions += implementation.insert(i)
+
+	return (implementation.table, collisions)
+
+if __name__ == "__main__": 
+	size = 11
+	numbers = [10, 22, 31, 4, 15, 28, 17, 88, 59]
+
+	print "Linear:", test_table(LinearHashtable(size), numbers)
+	print "Quadratic:", test_table(QuadraticHashtable(size), numbers)
+	print "Double:", test_table(DoubleHashtable(size), numbers)
+\end{minted}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|X|l||*{11}{r|}}
+	\hline
+    \textbf{Sondierung} & \textbf{Kollisionen} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \hline
+    Linear & \hphantom{1}7 & 22 & 88 &  &  & 4 & 15 & 28 & 17 & 59 & 31 & 10 \\
+\hline
+Quadratisch & 14 & 22 &  & 88 & 17 & 4 &  & 28 & 59 & 15 & 31 & 10 \\
+\hline
+Doppeltes Hashing & \hphantom{1}7 & 22 &  & 59 & 17 & 4 & 15 & 28 & 88 &  & 31 & 10 \\
+\hline
+\end{tabularx}
