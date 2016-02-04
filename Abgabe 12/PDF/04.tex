@@ -1,0 +1,151 @@
+\section*{Aufgabe 4}
+\paragraph{Dijkstra-Algorithmus} ~\\[0.5cm]
+\begin{minipage}{0.4\textwidth}
+	\begin{center}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[graph node, selected color] (v1) {$v_1$};
+			\node[graph node, selected color, above right=1.5cm and 2cm of v1] (s) {$s$};
+			\node[graph node, selected color, right of=s] (v2) {$v_2$};
+			\node[graph node, selected color, below right=1.5cm and 2cm of v1] (v3) {$v_3$};
+			\node[graph node, selected color, right of=v3] (v4) {$v_4$};
+
+
+			\draw[graph edge, dashed] (s) -- (v1) node[edge weight] {12};
+			\draw[graph edge, dashed] (s) -- (v2) node[edge weight] {8};
+			\path[graph edge, selected edge] (s)  edge[bend left=20] node[edge weight] {2} (v3);
+
+			\draw[graph edge, dashed] (v1) -- (v3) node[edge weight] {1};
+			
+			\path[graph edge, dashed] (v2) edge[bend left=20] node[edge weight] {1} (v4);
+
+			\draw[graph edge, dashed] (v3) -- (v2) node[edge weight] {5};
+			\draw[graph edge, selected edge] (v3) -- (v4) node[edge weight] {2};
+			\path[graph edge, dashed] (v3) edge[bend left=45] node[edge weight] {6} (v1);
+			\path[graph edge, dashed] (v3) edge[bend left=20] node[edge weight] {3} (s);
+
+			\draw[graph edge, selected edge] (v4) -- (v1) node[edge weight, near start] {1};
+			\path[graph edge, selected edge] (v4) edge[bend left=20] node[edge weight] {1} (v2);
+		\end{tikzpicture}
+	\end{center}
+\end{minipage}
+%
+\begin{minipage}[t]{0.6\textwidth}
+	\newcommand{\heapscale}{0.65}
+	\newcommand{\heapspacingtop}{\vspace{-0.7cm}}
+	\newcommand{\heapspacingbottom}{\vspace{-0.5cm}}
+
+	\begin{tabularx}{\textwidth}{|X|X|X|}
+		\hline
+			\begin{center}
+				\heapspacingtop
+				
+				\scalebox{\heapscale}{\begin{forest}
+					[$s | 0$, draw, ellipse
+						[$v_1 | \infty$, draw, ellipse
+							[$v_3 | \infty$, draw, ellipse]
+							[$v_4 | \infty$, draw, ellipse]
+						]
+						[$v_2 | \infty$, draw, ellipse]
+					]
+				\end{forest}}
+
+				\heapspacingbottom
+			\end{center}
+		&
+			\begin{center}
+				\heapspacingtop
+				
+				\scalebox{\heapscale}{\begin{forest}
+					[$v_3 | 3$, draw, ellipse
+						[$v_1 | 12$, draw, ellipse
+							[$v_4 | \infty$, draw, ellipse]
+							[,.phantom]
+						]
+						[$v_2 | 8$, draw, ellipse]
+					]
+				\end{forest}}
+
+				\heapspacingbottom
+			\end{center}
+		& 
+			\begin{center}
+				\heapspacingtop
+				
+				\scalebox{\heapscale}{\begin{forest}
+					[$v_4 | 4$, draw, ellipse
+						[$v_1 | 8$, draw, ellipse]
+						[$v_2 | 7$, draw, ellipse]
+					]
+				\end{forest}}
+
+				\heapspacingbottom
+			\end{center} \\
+		\hline
+			\begin{center}
+				\heapspacingtop
+				
+				\scalebox{\heapscale}{\begin{forest}
+					[$v_2 | 5$, draw, ellipse
+						[$v_1 | 5$, draw, ellipse]
+						[,.phantom]
+					]
+				\end{forest}}
+
+				\heapspacingbottom
+			\end{center} 
+		&
+			\begin{center}
+				\heapspacingtop
+				
+				\scalebox{\heapscale}{\begin{forest}
+					[$v_1 | 5$, draw, ellipse]
+				\end{forest}}
+
+				\heapspacingbottom
+			\end{center} 
+		& \\
+		\hline
+	\end{tabularx}
+\end{minipage}
+
+\paragraph{Bellman-Ford-Algorithmus} ~\\[0.5cm]
+\begin{minipage}{0.4\textwidth}
+	\begin{center}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[graph node, selected color] (v1) {$v_1$};
+			\node[graph node, selected color, above right=1.5cm and 2cm of v1] (s) {$s$};
+			\node[graph node, selected color, right of=s] (v2) {$v_2$};
+			\node[graph node, selected color, below right=1.5cm and 2cm of v1] (v3) {$v_3$};
+			\node[graph node, selected color, right of=v3] (v4) {$v_4$};
+
+
+			\draw[graph edge] (s) -- (v1) node[edge weight] {12};
+			\draw[graph edge] (s) -- (v2) node[edge weight] {8};
+			\path[graph edge, selected edge] (s)  edge[bend left=20] node[edge weight] {2} (v3);
+
+			\draw[graph edge, dashed] (v1) -- (v3) node[edge weight] {1};
+			
+			\path[graph edge, dashed] (v2) edge[bend left=20] node[edge weight] {1} (v4);
+
+			\draw[graph edge] (v3) -- (v2) node[edge weight] {5};
+			\draw[graph edge, selected edge] (v3) -- (v4) node[edge weight] {2};
+			\path[graph edge] (v3) edge[bend left=45] node[edge weight] {6} (v1);
+			\path[graph edge, dashed] (v3) edge[bend left=20] node[edge weight] {3} (s);
+
+			\draw[graph edge, selected edge] (v4) -- (v1) node[edge weight, near start] {1};
+			\path[graph edge, selected edge] (v4) edge[bend left=20] node[edge weight] {1} (v2);
+		\end{tikzpicture}
+	\end{center}
+\end{minipage}
+%
+\begin{minipage}[t]{0.6\textwidth}
+	\begin{tabularx}{\textwidth}{|l|l|X|X|X|l|}
+		\hline
+		 & $s$ & $v_1$ & $v_2$ & $v_3$ & $v_4$ \\
+		\hline
+		pred & NULL & \sout{$s$, $v_3$}, $v_4$  & \sout{$s$, $v_3$}, $v_4$  & $s$ & \sout{$v_2$}, $v_3$  \\
+		\hline
+		dist & 0    & \sout{12, 8}, 5           & \sout{8, 7}, 5            & 2   & \sout{9}, 4  \\
+		\hline
+	\end{tabularx}
+\end{minipage}

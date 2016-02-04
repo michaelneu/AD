@@ -1,0 +1,83 @@
+\section*{Aufgabe 3}
+\paragraph{Kruskal-Algorithmus} ~\\[0.5cm]
+\begin{center}
+    \begin{tikzpicture}[node distance=3cm]
+        \node[graph node, selected color] (v0) {$v_0$};
+        \coordinate[right of=v0] (v0_v2);
+        \node[graph node, above of=v0_v2, selected color] (v1) {$v_1$};
+        \node[graph node, right of=v0_v2, selected color] (v2) {$v_2$};
+        \node[graph node, above of=v2, selected color] (v3) {$v_3$};
+        \node[graph node, right of=v3, selected color] (v4) {$v_4$};
+        \coordinate[right of=v2] (v2_v5);
+        \node[graph node, right of=v2_v5, selected color] (v5) {$v_5$};
+        \node[graph node, below of=v2_v5, selected color] (v6) {$v_6$};
+        \node[graph node, below of=v2, selected color] (v7) {$v_7$};
+        \node[graph node, below of=v0_v2, selected color] (v8) {$v_8$};
+
+
+		\draw[dashed] (v0) -- (v1) node[edge weight] {12};
+		\draw[selected edge] (v0) -- (v8) node[edge weight] {3};
+
+		\draw[selected edge] (v1) -- (v8) node[edge weight] {4};
+		\draw[selected edge] (v1) -- (v3) node[edge weight] {5};
+
+		\draw[dashed] (v3) -- (v2) node[edge weight] {8};
+		\draw[selected edge] (v3) -- (v4) node[edge weight] {1};
+		\draw[dashed] (v3) -- (v6) node[edge weight] {8};
+
+		\draw[dashed] (v2) -- (v8) node[edge weight] {12};
+		\draw[selected edge] (v2) -- (v7) node[edge weight] {3};
+		\draw[selected edge] (v2) -- (v6) node[edge weight] {6};
+		\draw[dashed] (v2) -- (v4) node[edge weight, near end] {14};
+
+		\draw[selected edge] (v4) -- (v5) node[edge weight] {1};
+		\draw[dashed] (v4) -- (v6) node[edge weight] {11};
+
+		\draw[dashed] (v5) -- (v6) node[edge weight] {10};
+
+		\draw[selected edge] (v7) -- (v8) node[edge weight] {4};
+		\draw[dashed] (v7) -- (v6) node[edge weight] {17};
+    \end{tikzpicture}
+\end{center}
+
+
+\paragraph{Prim-Algorithmus} ~\\[0.5cm]
+\begin{center}
+    \begin{tikzpicture}[node distance=3cm]
+        \node[graph node, selected color] (v0) {$v_0$};
+        \coordinate[right of=v0] (v0_v2);
+        \node[graph node, above of=v0_v2, selected color] (v1) {$v_1$};
+        \node[graph node, right of=v0_v2, selected color] (v2) {$v_2$};
+        \node[graph node, above of=v2, selected color] (v3) {$v_3$};
+        \node[graph node, right of=v3, selected color] (v4) {$v_4$};
+        \coordinate[right of=v2] (v2_v5);
+        \node[graph node, right of=v2_v5, selected color] (v5) {$v_5$};
+        \node[graph node, below of=v2_v5, selected color] (v6) {$v_6$};
+        \node[graph node, below of=v2, selected color] (v7) {$v_7$};
+        \node[graph node, below of=v0_v2, selected color] (v8) {$v_8$};
+
+
+		\draw[dashed] (v0) -- (v1) node[edge weight] {12};
+		\draw[selected edge] (v0) -- (v8) node[edge weight] {3};
+
+		\draw[selected edge] (v1) -- (v8) node[edge weight] {4};
+		\draw[selected edge] (v1) -- (v3) node[edge weight] {5};
+
+		\draw[dashed] (v3) -- (v2) node[edge weight] {8};
+		\draw[selected edge] (v3) -- (v4) node[edge weight] {1};
+		\draw[dashed] (v3) -- (v6) node[edge weight] {8};
+
+		\draw[dashed] (v2) -- (v8) node[edge weight] {12};
+		\draw[selected edge] (v2) -- (v7) node[edge weight] {3};
+		\draw[selected edge] (v2) -- (v6) node[edge weight] {6};
+		\draw[dashed] (v2) -- (v4) node[edge weight, near end] {14};
+
+		\draw[selected edge] (v4) -- (v5) node[edge weight] {1};
+		\draw[dashed] (v4) -- (v6) node[edge weight] {11};
+
+		\draw[dashed] (v5) -- (v6) node[edge weight] {10};
+
+		\draw[selected edge] (v7) -- (v8) node[edge weight] {4};
+		\draw[dashed] (v7) -- (v6) node[edge weight] {17};
+    \end{tikzpicture}
+\end{center}

@@ -1,0 +1,33 @@
+\section*{Aufgabe 2}
+\paragraph{Algorithmus $BogoTopoSorto(G)$} ~\\[0.5cm]
+\begin{minipage}[t]{0.7\textwidth}
+    \begin{itemize}[noitemsep]
+        \item Sei $V' = V$
+        \item Sei $T$ eine Liste
+        \item Solange $\exists v \in V': \mathrm{deg}^-(v) = 0$: 
+        \item[] \begin{itemize}[nolistsep, noitemsep]
+            \item entferne $v$ aus $V$
+            \item füge $v$ zu $T$ hinzu
+        \end{itemize}
+        \item Wenn $|V'| > 0$
+        \item[] \begin{itemize}[nolistsep, noitemsep]
+            \item Graph enthält Zyklen
+        \end{itemize}
+    \end{itemize}
+\end{minipage}
+%
+\begin{minipage}[t]{0.3\textwidth}
+	\begin{itemize}[noitemsep]
+    	\item[] $\Theta(1)$
+    	\item[] $\Theta(1)$
+    	\item[] $\Theta(|V| + |E|)$
+    	\subitem $\Theta(1)$
+    	\subitem $\Theta(1)$
+    	\item[] $\Theta(1)$
+    	\subitem $\Theta(1)$
+    \end{itemize}
+\end{minipage}
+
+\vspace{0.5cm}
+
+Der Algorithmus bricht ab sobald kein Knoten $v$ mit $\mathrm{deg}^-(v) = 0$ gefunden werden kann und der \enquote{verbliebene} Teilgraph nicht leer ist, da ein Zyklus eine topologische Sortierung unmöglich macht. 

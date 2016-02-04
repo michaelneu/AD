@@ -1,0 +1,50 @@
+\section*{Aufgabe 1}
+\paragraph{Idee} \enquote{Erweiterte Tiefensuche}: Soll ein bereits besuchter Knoten besucht werden, so wird dieser Zyklus ausgegeben. 
+
+\paragraph{Implementierung}
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+public List<GraphNode> GetCycle()
+{
+	var cycle = new List<GraphNode>();
+
+	foreach (var node in nodes)
+	{
+		cycle = GetCycle(node, new List<GraphNode>());
+
+		if (cycle.Count > 0)
+		{
+			break;
+		}
+	}
+
+	return cycle;
+}
+
+private List<GraphNode> GetCycle(GraphNode start, List<GraphNode> currentPath)
+{
+	foreach (var node in GetConnectedNodes(start))
+	{
+		if (currentPath.Contains(node))
+		{
+			return  currentPath.SkipWhile(x => x != node)
+								.Add(node)
+								.ToList();
+		}
+		else
+		{
+			var tempPath = new List<GraphNode>();
+			tempPath.AddRange(currentPath);
+			tempPath.Add(node);
+
+			var cycle = GetCycle(node, tempPath);
+
+			if (cycle.Count > 0)
+			{
+				return cycle;
+			}
+		}
+	}
+
+	return new List<GraphNode>();
+}
+\end{minted}
