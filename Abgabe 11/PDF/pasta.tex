@@ -1,0 +1,82 @@
+% standard-tabelle
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+	\hline
+    content & in & 4 & spalten \\
+    \hline
+\end{tabularx}
+
+% tabelle über mehrere seiten (header kommt automatisch)
+% 3x 2cm-spalten
+\begin{longtable}{*{3}{|p{2cm}}|}
+	\hline
+	\textbf{Titel} & \textbf{der} & \textbf{Spalten} \\
+    \hline
+    \endhead
+    normaler & content & hier \\
+    \hline
+\end{longtable}
+
+% alphabetische aufzählung
+\begin{enumerate}[nolistsep, noitemsep, label=\alph*)]
+	\item content
+    \item content
+\end{enumerate}
+
+% code
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{python}
+import antigravity
+\end{minted}
+
+% eigene schriftgröße                      {  x  }{ 1.2*x }
+\newcommand{\schriftgroessenname}{\fontsize{8.5pt}{10.2pt}}
+
+% lange gleichungen (aligned)
+\begin{align*}
+	a &= b \\
+    &= \nonterm{f} \lightning
+\end{align*}
+
+% beweis ende
+\nuffsaid
+
+% baum
+\begin{center}
+	\begin{forest}
+        qtree edges
+        [$A$, name=NODE_A
+        	[$B$ 
+            	[$D$ ] 
+                [$E$ ] 
+			]
+            [$C$, name=NODE_C
+            	[$F$ ]
+                [,.phantom]
+			]
+		]
+%
+		\draw[decorate,decoration={brace,amplitude=10pt}] (3,0) -- (3,-2.5);
+        \node[anchor=west] at (3.5,-1.3) {Beschreibung};
+%
+		\draw[dashed, <->] (NODE_C) to [bend right=90] (NODE_A);
+	\end{forest}
+\end{center}
+
+% typographie
+\textbf{fett}
+\textit{kursiv}
+\underline{unterstrichen}
+\texttt{monospace/code}
+
+
+
+
+
+
+
+
+
+
+
+
+% font test
+Neutra photo booth yuccie roof party, williamsburg sartorial art party iPhone sustainable fixie kogi. Bushwick kinfolk authentic, roof party blue bottle meditation banh mi cliche skateboard echo park. Artisan gastropub kombucha tilde retro sartorial. Cronut whatever brunch umami. Banjo butcher chartreuse marfa. Hella pabst iPhone shabby chic brunch. YOLO gentrify meditation, skateboard direct trade roof party butcher tumblr narwhal heirloom. Sustainable vinyl vice, whatever franzen pork belly actually pour-over gluten-free. Microdosing sartorial cray paleo next level messenger bag. \\ Disrupt lomo mustache, flexitarian messenger bag keytar schlitz. Waistcoat wayfarers bitters pabst, etsy vinyl franzen mixtape ethical cray thundercats skateboard authentic knausgaard. Viral taxidermy artisan raw denim lumbersexual, small batch trust fund salvia kinfolk irony XOXO tattooed umami. Thundercats hoodie +1 salvia intelligentsia banh mi. Tacos mlkshk everyday carry fap selvage. Letterpress seitan kogi lo-fi marfa. Church-key raw denim stumptown, shabby chic flannel tote bag normcore. Master cleanse tacos humblebrag green juice, taxidermy tousled twee portland. Paleo williamsburg portland helvetica celiac. Disrupt freegan bitters, readymade literally green juice meditation gentrify single-origin coffee godard hella pour-over tattooed listicle. Kitsch hammock disrupt, drinking vinegar paleo tattooed gentrify intelligentsia chartreuse flexitarian. Cronut mumblecore try-hard, fingerstache typewriter before they sold out gentrify waistcoat pug. \\ Thundercats actually occupy chia. Lomo DIY post-ironic VHS next level offal. 8-bit yr four dollar toast bespoke godard, gastropub portland trust fund paleo intelligentsia. Jean shorts craft beer before they sold out farm-to-table, etsy austin kogi iPhone. Put a bird on it farm-to-table plaid migas, freegan letterpress DIY gluten-free church-key microdosing brunch. Chia kogi PBR\&B occupy drinking vinegar shoreditch, swag literally. Raw denim microdosing offal, jean shorts scenester williamsburg helvetica +1 aesthetic etsy leggings narwhal.
