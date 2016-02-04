@@ -1,0 +1,25 @@
+\section*{Aufgabe 3}
+\paragraph{Inorder-Nachfolger} 4 $\rightarrow$ 5, 18 $\rightarrow$ 19 und 21 $\rightarrow$ 22. 
+
+\paragraph{Finaler Baum} Nachdem sowohl die einzelnen Zwischenbäume, als auch der Endbaum per Generator erzeugt werden können, haben wir uns entschlossen nur den finalen Baum \enquote{abzutippen}, da das Erstellen dieses Baums die eigentliche Herausforderung war. \\[0.5cm]
+
+\begin{center}
+	\begin{forest}
+    	qtree edges
+        [13, draw 
+        	[{3, 6, 10}, draw 
+            	[{1, 2}, draw] 
+                [{4, 5}, draw] 
+                [{7, 8, 9}, draw] 
+                [{11, 12}, draw]
+            ] 
+            [{18, 21, 24}, draw 
+            	[{14, 15, 16, 17}, draw] 
+                [{19, 20}, draw] 
+                [{22, 23}, draw] 
+                [{25, 26}, draw]
+            ]
+        ]
+    	%[13 [{3, 6, 10} [{1, 2}] [{4, 5}] [{7, 8, 9}] [{11, 12}]] [{18, 21, 24} [{14, 15, 16, 17}] [{19, 20}] [{22, 23}] [{25, 26}]]]
+    \end{forest}
+\end{center}

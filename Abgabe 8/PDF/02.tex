@@ -1,0 +1,64 @@
+\section*{Aufgabe 2}
+\paragraph{Minimaler RS-Baum} Wurzel $v$ mit $bh(v) = 4$. Da keinerlei Kenntnisse über das Einfügen in einen RS-Baum vorhanden sind (vgl. Vorlesungs-Skript) wurde hier nur ein RS-Baum dargestellt, der die Vorschriften für einen RS-Baum nicht verletzt. 
+
+\begin{center}
+	\begin{forest}
+    	qtree edges
+    	[{}, circle, fill=black
+        	[{}, circle, fill=black
+            	[{}, circle, fill=black
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                ]
+            	[{}, circle, fill=black
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                ]
+            ]
+        	[{}, circle, fill=black
+            	[{}, circle, fill=black
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                ]
+            	[{}, circle, fill=black
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                	[{}, circle, fill=black
+                    	[nil]
+                    	[nil]
+                    ]
+                ]
+            ]
+        ]
+	\end{forest}
+\end{center}
+
+\paragraph{Beweis} 
+\begin{itemize}[nolistsep, noitemsep]
+	\item kürzester Pfad = nur schwarze Knoten
+    \item längster Pfad = abwechselnd rote und schwarze Knoten, Wurzel ist schwarz
+    \item Für Wurzel $v$ gilt: $bh(v) = n_{schwarz}$
+    	\subitem -- kürzester Pfad = $n$ Knoten
+        \subitem -- längster Pfad = $n$ schwarze und $n$ rote Knoten (immer abwechselnd, sodass RS-Eigenschaften nicht verletzt werden)
+        \subitem $\Rightarrow$ 2 $\cdot$ kürzester Pfad $\geq$ längster Pfad
+\end{itemize}

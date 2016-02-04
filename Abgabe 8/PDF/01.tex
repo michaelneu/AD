@@ -1,0 +1,38 @@
+\section*{Aufgabe 1}
+
+\begin{enumerate}[nolistsep, label=\alph*)]
+	\item Der Inorder-Nachfolger eines Knotens $k_1$ entspricht dem ersten Knoten $k_2$, der keinen linken Nachfolger $k_3$ besitzt, da sonst $k_3$ oder ein anderer Knoten $k_4$ im linken Teilbaum von $k_3$ ohne linken Nachfolger der Inorder-Nachfolger von $k_1$ wäre. 
+    \item[$\Rightarrow$] $k_1 < k_2$
+    \item[] $\not\exists \overline{k}: k_1 < \overline{k} < k_2$
+    \item[] $k_3 = \overline{k} \Rightarrow k_1 < k_3 < k2 \Rightarrow \lightning$
+    \item Falsch, Gegenbeispiel: 
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{tabularx}{\textwidth}{|X|X|X|}
+	\hline
+    Ursprünglicher AVL-Baum & Löschen von 1 und 4 & Löschen von 4 und 1 \\
+    \hline
+    \begin{center}
+        \begin{forest}
+        	qtree edges
+            [2 [1] [3 [,.phantom] [4]]]
+        \end{forest}
+    \end{center}
+    &
+    \begin{center}
+        \begin{forest}
+        	qtree edges
+            [3 [2] [,.phantom]]
+        \end{forest}
+    \end{center}
+    &
+    \begin{center}
+        \begin{forest}
+        	qtree edges
+            [2 [,.phantom] [3]]
+        \end{forest}
+    \end{center} \\
+    \hline
+\end{tabularx}
