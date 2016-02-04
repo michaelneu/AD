@@ -1,0 +1,30 @@
+\section*{Aufgabe 3}
+\begin{minted}[mathescape=false, fontsize=\fontsize{9.5pt}{10.8pt}, xleftmargin=6mm, framesep=0mm, tabsize=4, linenos]{csharp}
+public static bool NaiveSearch(string text, string muster)
+{
+	int i = 0;
+	
+	while (text[i] != muster[0] && i < text.Length)
+	{
+		i++;
+	}
+
+	for (int j = 0; j < muster.Length; j++)
+	{
+    	if (i + j == text.Length - 1 || text[i + j] != muster[j])
+    	{
+    		return false;
+    	}
+	}
+
+	return true;
+}
+\end{minted}
+
+\paragraph{Laufzeit} NaiveSearch \\
+\begin{itemize}[nolistsep, noitemsep]
+    \item \texttt{while}-Schleife iteriert $n$ mal, oder bricht vorher ab, falls erstes Zeichen übereinstimmt
+    \item bei Abbruch iteriert \texttt{for}-Schleife bis maximal $n$ weiter
+\end{itemize}
+
+\textbf{somit gilt:} $\Theta(n)$.

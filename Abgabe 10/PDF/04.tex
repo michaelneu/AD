@@ -1,0 +1,19 @@
+\section*{Aufgabe 4}
+\paragraph{Herleitung der Gleichung}
+\begin{align*}
+	\overbrace{(n - m + 1)}^\text{Laufzeit der Schleife} \cdot &\overbrace{\underbrace{\frac{1 - |\Sigma|^{-m}}{1 - |\Sigma|^{-1}}}_\Downarrow}^{\substack{\text{Erwartungswert der Anzahl} \\ \text{der korrekten Vergleiche}}} \\[1cm]
+	X_i &= \left\{ \begin{matrix}
+    					1 & \text{$i$-ter Vergleich findet statt} \\
+                        0 & \text{sonst}
+    			   \end{matrix} \right. \\
+	P_i &= \left( \frac{1}{|\Sigma|} \right)^i \\
+    E[X_i] &= 1 \cdot p_i + 0 \cdot ( 1 - p_i) = \left( \frac{1}{|\Sigma|} \right)^i \\[0.5cm]
+    X &= \sum_{i = 0}^{m - 1} X_i \\
+    E[X] &= E\left[\sum_{i = 0}^{m - 1} X_i \right] = \sum_{i = 0}^{m - 1} E[X_i] = &\text{(endliche geometrische Reihe)}\\
+    &= \frac{1 - E[X_i]^m}{1 - E[X_i]} = \frac{1 - |\Sigma|^{-m}}{1 - |\Sigma|^{-1}}
+\end{align*}
+
+\paragraph{Abschätzung der Laufzeit}
+\begin{align*}
+	\underbrace{\overbrace{\frac{1 - |\Sigma|^{-m}}{1 - |\Sigma|^{-1}}}^{\substack{\text{Zähler muss größer werden} \\ \text{$\Rightarrow$ alles \enquote{rauslassen} was} \\ \text{den Bruch größer macht}}}}_{\substack{\text{\enquote{Maximum des Dynamischen} finden,} \\ \text{d.h. $|\Sigma| \geq 2 \Rightarrow 1 - |\Sigma|^{-1}$ abschätzen}}} \leq \frac{1}{1 - \frac{1}{2}} = 2
+\end{align*}
